@@ -253,18 +253,23 @@ def predict_paid_or_unpaid (years_experience):
 
     
     
-#   --->>>   semana 06 exercício 03
-tenure_payment = defaultdict(list)
-for tenure, payment in tenure_payment:
-    tenure_payment[payment].append(tenure)
+#   --->>>   semana 06 exercício 04
 
+words = []
+single =[]
+for user, interest in interests:
+    inte = interest.split(" ") 
+    words.append(inte)
+    for word in words :
+        if (len(word) > 1) :
+            single.append(word[0])
+            single.append(word[1])
+        else :
+            single.append(word[0])
+         
+print(single)
 
-pay = []
-for i, j in tenure_and_account_type:
-    pay.append(j)     
-print(pay)
-
-histogram = Counter (i for i in pay)
+histogram = Counter (i for i in single)
 plt.bar (
     [
         x for x in histogram.keys()
@@ -272,8 +277,8 @@ plt.bar (
     histogram.values(),
     .8
 )
-plt.axis ([-1, 2, 0, 10])
-plt.xticks ([i for i in range (2)])
+plt.axis ([-1, 33, 0, 100])
+plt.xticks ([i for i in range (39)])
 plt.xlabel("Tempo de experiência")
 plt.ylabel("# de Pagantes")
 plt.title ("Distribuição d Pagantes por Tempo de experiência")
